@@ -1,0 +1,386 @@
+{
+  "Alaotra-Mangoro": {
+    "especes_emblematiques": [
+      "Indri indri",
+      "Lémurien aye-aye",
+      "Orchidée Angraecum sesquipedale"
+    ],
+    "taux_endemisme": "80-90%",
+    "menaces": [
+      "déforestation",
+      "agriculture sur brûlis",
+      "fragmentation des habitats"
+    ],
+    "aires_protegees": [
+      "Parc national de Zahamena",
+      "Réserve spéciale d'Anjanaharibe-Sud"
+    ],
+    "statut_conservation": "critique"
+  },
+  "Amoron'i Mania": {
+    "especes_emblematiques": [
+      "Lémurien sifaka de Coquerel",
+      "Phelsuma grandis",
+      "Baobab de Grandidier"
+    ],
+    "taux_endemisme": "70-80%",
+    "menaces": [
+      "surexploitation du bois",
+      "feux de brousse",
+      "pression agricole"
+    ],
+    "aires_protegees": [
+      "Aire protégée de l'Andringitra"
+    ],
+    "statut_conservation": "vulnerable"
+  },
+  "Analamanga": {
+    "especes_emblematiques": [
+      "Indri indri",
+      "Maki catta",
+      "Tangue de Madagascar"
+    ],
+    "taux_endemisme": "75-85%",
+    "menaces": [
+      "urbanisation",
+      "déforestation",
+      "pollution"
+    ],
+    "aires_protegees": [
+      "Parc national de l'Ankarafantsika",
+      "Forêt de la Vallée de l'Isalo"
+    ],
+    "statut_conservation": "vulnerable"
+  },
+  "Analanjirofo": {
+    "especes_emblematiques": [
+      "Lémurien indri",
+      "Chameleon Oustalet's",
+      "Fandranganana"
+    ],
+    "taux_endemisme": "85-95%",
+    "menaces": [
+      "déforestation côtière",
+      "pêche illégale",
+      "changement climatique"
+    ],
+    "aires_protegees": [
+      "Parc national de Masoala",
+      "Réserve spéciale de Marotandra"
+    ],
+    "statut_conservation": "critique"
+  },
+  "Androy": {
+    "especes_emblematiques": [
+      "Lémurien de Madagascar",
+      "Baobab de Madagascar",
+      "Plectrohyla madagascariensis"
+    ],
+    "taux_endemisme": "60-70%",
+    "menaces": [
+      "sécheresse",
+      "surpâturage",
+      "surexploitation des ressources"
+    ],
+    "aires_protegees": [
+      "Aire protégée d'Andohahela"
+    ],
+    "statut_conservation": "vulnerable"
+  },
+  "Anosy": {
+    "especes_emblematiques": [
+      "Lémurien sifaka",
+      "Pachypodium rosulatum",
+      "Faux baobab"
+    ],
+    "taux_endemisme": "80-90%",
+    "menaces": [
+      "déforestation",
+      "feux de brousse",
+      "pression agricole"
+    ],
+    "aires_protegees": [
+      "Parc national de Andohahela",
+      "Aire protégée de Cape Sainte-Marie"
+    ],
+    "statut_conservation": "critique"
+  },
+  "Atsimo-Andrefana": {
+    "especes_emblematiques": [
+      "Baobab de Grandidier",
+      "Lémurien sportive",
+      "Pachypodium geayi"
+    ],
+    "taux_endemisme": "75-85%",
+    "menaces": [
+      "désertification",
+      "mise en culture",
+      "braconnage"
+    ],
+    "aires_protegees": [
+      "Parc national d'Isalo",
+      "Aire protégée de Tsimanampetsotsa"
+    ],
+    "statut_conservation": "vulnerable"
+  },
+  "Atsimo-Atsinanana": {
+    "especes_emblematiques": [
+      "Lémurien aye-aye",
+      "Faux baobab",
+      "Fougère arborescente"
+    ],
+    "taux_endemisme": "70-80%",
+    "menaces": [
+      "déforestation",
+      "pratiques agricoles intensives",
+      "érosion"
+    ],
+    "aires_protegees": [
+      "Parc national de Ranomafana"
+    ],
+    "statut_conservation": "vulnerable"
+  },
+  "Betsiboka": {
+    "especes_emblematiques": [
+      "Lémurien indri",
+      "Pteropus rufus",
+      "Orchidée Angraecum"
+    ],
+    "taux_endemisme": "65-75%",
+    "menaces": [
+      "déforestation",
+      "agriculture itinérante",
+      "exploitation du bois"
+    ],
+    "aires_protegees": [
+      "Parc national de Tsingy de Bemaraha"
+    ],
+    "statut_conservation": "vulnerable"
+  },
+  "Boeny": {
+    "especes_emblematiques": [
+      "Lémurien de Madagascar",
+      "Pangolin de Madagascar",
+      "Baobab"
+    ],
+    "taux_endemisme": "60-70%",
+    "menaces": [
+      "feux de brousse",
+      "déforestation",
+      "pression pastorale"
+    ],
+    "aires_protegees": [
+      "Parc national de l'Ankarafantsika"
+    ],
+    "statut_conservation": "stable"
+  },
+  "Bongolava": {
+    "especes_emblematiques": [
+      "Maki catta",
+      "Chameleon Furcifer",
+      "Pachypodium lamerei"
+    ],
+    "taux_endemisme": "70-80%",
+    "menaces": [
+      "fragmentation forestière",
+      "déforestation",
+      "agriculture"
+    ],
+    "aires_protegees": [
+      "Forêt classée de Bongolava"
+    ],
+    "statut_conservation": "vulnerable"
+  },
+  "Diana": {
+    "especes_emblematiques": [
+      "Lémurien sifaka",
+      "Phelsuma lineata",
+      "Baobab de Madagascar"
+    ],
+    "taux_endemisme": "75-85%",
+    "menaces": [
+      "déforestation côtière",
+      "tourisme non maîtrisé",
+      "chasse"
+    ],
+    "aires_protegees": [
+      "Parc national de Nosy Hara",
+      "Réserve spéciale de l'Ankarana"
+    ],
+    "statut_conservation": "critique"
+  },
+  "Haute Matsiatra": {
+    "especes_emblematiques": [
+      "Indri indri",
+      "Lémurien sifaka",
+      "Bambou de Madagascar"
+    ],
+    "taux_endemisme": "80-90%",
+    "menaces": [
+      "déforestation",
+      "cultures de montagne",
+      "érosion"
+    ],
+    "aires_protegees": [
+      "Parc national de l'Andringitra"
+    ],
+    "statut_conservation": "critique"
+  },
+  "Ihorombe": {
+    "especes_emblematiques": [
+      "Baobab de Grandidier",
+      "Lémurien de Madagascar",
+      "Euphorbe malgache"
+    ],
+    "taux_endemisme": "65-75%",
+    "menaces": [
+      "sécheresse",
+      "déforestation",
+      "pâturage intensif"
+    ],
+    "aires_protegees": [
+      "Aire protégée de l'Isalo"
+    ],
+    "statut_conservation": "vulnerable"
+  },
+  "Itasy": {
+    "especes_emblematiques": [
+      "Maki catta",
+      "Phelsuma madagascariensis",
+      "Ravenala madagascariensis"
+    ],
+    "taux_endemisme": "70-80%",
+    "menaces": [
+      "agriculture",
+      "fragmentation des forêts",
+      "feux de brousse"
+    ],
+    "aires_protegees": [
+      "Parc national de la forêt d'Andasibe"
+    ],
+    "statut_conservation": "vulnerable"
+  },
+  "Melaky": {
+    "especes_emblematiques": [
+      "Baobab de Grandidier",
+      "Lémurien aye-aye",
+      "Pachypodium namaquanum"
+    ],
+    "taux_endemisme": "60-70%",
+    "menaces": [
+      "désertification",
+      "feux de brousse",
+      "exploitation du bois"
+    ],
+    "aires_protegees": [
+      "Parc national de Tsingy de Bemaraha"
+    ],
+    "statut_conservation": "vulnerable"
+  },
+  "Menabe": {
+    "especes_emblematiques": [
+      "Baobab de Grandidier",
+      "Lémurien sifaka",
+      "Faux baobab"
+    ],
+    "taux_endemisme": "80-90%",
+    "menaces": [
+      "déforestation",
+      "agriculture intensive",
+      "changement climatique"
+    ],
+    "aires_protegees": [
+      "Parc national de Kirindy",
+      "Réserve spéciale de Tsingy de Bemaraha"
+    ],
+    "statut_conservation": "critique"
+  },
+  "Sava": {
+    "especes_emblematiques": [
+      "Lémurien indri",
+      "Chameleon Furcifer",
+      "Orchidée Angraecum"
+    ],
+    "taux_endemisme": "85-95%",
+    "menaces": [
+      "déforestation",
+      "exploitation minière",
+      "pression touristique"
+    ],
+    "aires_protegees": [
+      "Parc national de Marojejy",
+      "Réserve spéciale d'Anjanaharibe-Sud"
+    ],
+    "statut_conservation": "critique"
+  },
+  "Sofia": {
+    "especes_emblematiques": [
+      "Indri indri",
+      "Lémurien aye-aye",
+      "Ravenala madagascariensis"
+    ],
+    "taux_endemisme": "75-85%",
+    "menaces": [
+      "déforestation",
+      "agriculture sur brûlis",
+      "chasse"
+    ],
+    "aires_protegees": [
+      "Parc national de Marojejy"
+    ],
+    "statut_conservation": "vulnerable"
+  },
+  "Vatovavy-Fitovinany": {
+    "especes_emblematiques": [
+      "Indri indri",
+      "Maki catta",
+      "Phelsuma barbouri"
+    ],
+    "taux_endemisme": "80-90%",
+    "menaces": [
+      "déforestation",
+      "fragmentation des habitats",
+      "exploitation de la forêt"
+    ],
+    "aires_protegees": [
+      "Parc national de Ranomafana",
+      "Réserve spéciale de Marotandra"
+    ],
+    "statut_conservation": "critique"
+  },
+  "Vakinankaratra": {
+    "especes_emblematiques": [
+      "Lémurien sifaka",
+      "Orchidée Angraecum",
+      "Baobab de Madagascar"
+    ],
+    "taux_endemisme": "70-80%",
+    "menaces": [
+      "agriculture de montagne",
+      "déforestation",
+      "érosion des sols"
+    ],
+    "aires_protegees": [
+      "Parc national de l'Andringitra"
+    ],
+    "statut_conservation": "vulnerable"
+  },
+  "Atsinanana": {
+    "especes_emblematiques": [
+      "Indri indri",
+      "Lémurien aye-aye",
+      "Phelsuma lineata"
+    ],
+    "taux_endemisme": "80-90%",
+    "menaces": [
+      "déforestation côtière",
+      "pêche illégale",
+      "urbanisation"
+    ],
+    "aires_protegees": [
+      "Parc national de Masoala",
+      "Parc national de Zahamena"
+    ],
+    "statut_conservation": "critique"
+  }
+}
