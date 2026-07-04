@@ -47,7 +47,7 @@
     `;
   }
 
-  // Fonction 1 
+  
   function renderInfoPanel(regionName, faunaFloreData) {
     const panel = getPanelElement();
     panel.classList.add("info-panel--open");
@@ -107,7 +107,7 @@
     panel.querySelector(".panel-close").addEventListener("click", closePanel);
   }
 
-  // Fonction 2 
+  
   function getRegionData(regionName, dataSource) {
     if (!regionName || !dataSource) {
       return null;
@@ -125,7 +125,7 @@
     return matchingKey ? dataSource[matchingKey] : null;
   }
 
-  // Fonction 3 du TODO: showConservationBadge(statut)
+  
   function showConservationBadge(statut) {
     const normalizedStatus = normalizeText(statut);
     const knownStatuses = {
@@ -139,7 +139,7 @@
     return `<span class="conservation-badge conservation-badge--${className}">${label}</span>`;
   }
 
-  // Fonction 4 
+  
   function closePanel() {
     const panel = getPanelElement();
     panel.classList.remove("info-panel--open");
@@ -177,7 +177,7 @@
     );
   }
 
-  // Fonction 5 
+ 
   async function handleRegionClick(feature, layer) {
     const regionName = getRegionNameFromFeature(feature);
 
