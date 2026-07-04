@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const DATA_URL = "data/faune_flore.json";
+  const DATA_URLS = ["data/mock_faune_flore.json", "data/faune_flore.json"];
   let cachedFaunaFloreData = null;
 
   function escapeHtml(value) {
@@ -47,36 +47,7 @@
     `;
   }
 
-  function showConservationBadge(statut) {
-    const normalizedStatus = normalizeText(statut);
-    const knownStatuses = {
-      critique: "Critique",
-      vulnerable: "Vulnerable",
-      stable: "Stable",
-    };
-    const label = knownStatuses[normalizedStatus] || "Non renseigne";
-    const className = knownStatuses[normalizedStatus] ? normalizedStatus : "inconnu";
-
-    return `<span class="conservation-badge conservation-badge--${className}">${label}</span>`;
-  }
-
-  function getRegionData(regionName, dataSource) {
-    if (!regionName || !dataSource) {
-      return null;
-    }
-
-    if (Object.prototype.hasOwnProperty.call(dataSource, regionName)) {
-      return dataSource[regionName];
-    }
-
-    const normalizedRegionName = normalizeText(regionName);
-    const matchingKey = Object.keys(dataSource).find(
-      (key) => normalizeText(key) === normalizedRegionName
-    );
-
-    return matchingKey ? dataSource[matchingKey] : null;
-  }
-
+  // Fonction 1 
   function renderInfoPanel(regionName, faunaFloreData) {
     const panel = getPanelElement();
     panel.classList.add("info-panel--open");
@@ -136,6 +107,39 @@
     panel.querySelector(".panel-close").addEventListener("click", closePanel);
   }
 
+  // Fonction 2 
+  function getRegionData(regionName, dataSource) {
+    if (!regionName || !dataSource) {
+      return null;
+    }
+
+    if (Object.prototype.hasOwnProperty.call(dataSource, regionName)) {
+      return dataSource[regionName];
+    }
+
+    const normalizedRegionName = normalizeText(regionName);
+    const matchingKey = Object.keys(dataSource).find(
+      (key) => normalizeText(key) === normalizedRegionName
+    );
+
+    return matchingKey ? dataSource[matchingKey] : null;
+  }
+
+  // Fonction 3 du TODO: showConservationBadge(statut)
+  function showConservationBadge(statut) {
+    const normalizedStatus = normalizeText(statut);
+    const knownStatuses = {
+      critique: "Critique",
+      vulnerable: "Vulnerable",
+      stable: "Stable",
+    };
+    const label = knownStatuses[normalizedStatus] || "Non renseigne";
+    const className = knownStatuses[normalizedStatus] ? normalizedStatus : "inconnu";
+
+    return `<span class="conservation-badge conservation-badge--${className}">${label}</span>`;
+  }
+
+  // Fonction 4 
   function closePanel() {
     const panel = getPanelElement();
     panel.classList.remove("info-panel--open");
@@ -147,13 +151,20 @@
       return cachedFaunaFloreData;
     }
 
-    const response = await fetch(DATA_URL);
-    if (!response.ok) {
-      throw new Error(`Impossible de charger ${DATA_URL}`);
+    for (const dataUrl of DATA_URLS) {
+      try {
+        const response = await fetch(dataUrl);
+
+        if (response.ok) {
+          cachedFaunaFloreData = await response.json();
+          return cachedFaunaFloreData;
+        }
+      } catch (error) {
+        console.warn(`Chargement impossible: ${dataUrl}`, error);
+      }
     }
 
-    cachedFaunaFloreData = await response.json();
-    return cachedFaunaFloreData;
+    throw new Error("Impossible de charger les donnees faune/flore.");
   }
 
   function getRegionNameFromFeature(feature) {
@@ -161,15 +172,12 @@
 
     return (
       properties.nom_region ||
-      properties.NOM_REGION ||
-      properties.region ||
-      properties.name ||
       properties.NAME_1 ||
-      properties.NAME ||
       ""
     );
   }
 
+  // Fonction 5 
   async function handleRegionClick(feature, layer) {
     const regionName = getRegionNameFromFeature(feature);
 
