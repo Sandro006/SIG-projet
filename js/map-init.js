@@ -39,36 +39,41 @@ function highlightRegion(layer) {
 }
 
 function resetRegionStyle(layer) {
-    layer.setStyle(styleRegion(layer.feature));
+    // On restaure le dernier style "voulu" (celui posé par un filtre/recherche)
+    // plutôt que le style par défaut, sinon le survol annule le filtre en cours.
+    layer.setStyle(layer._currentStyle || styleRegion(layer.feature));
     layer.closePopup();
 }
 
 function loadRegionsLayer(map, geojsonUrl, onRegionClick) {
-    fetch(geojsonUrl)
+    return fetch(geojsonUrl)
         .then(response => response.json())
         .then(data => {
-            L.geoJSON(data, {
+            const geoJsonLayer = L.geoJSON(data, {
                 style: styleRegion,
                 onEachFeature: function(feature, layer) {
                     layer.feature = feature;
+                    layer._currentStyle = styleRegion(feature);
 
                     layer.on('mouseover', function() {
                         highlightRegion(this);
                     });
-                    
+
                     layer.on('mouseout', function() {
                         resetRegionStyle(this);
                     });
 
                     layer.on('click', function() {
                         if (typeof onRegionClick === 'function') {
-                            onRegionClick(feature);
+                            onRegionClick(feature, layer);
                         }
                     });
                 }
             }).addTo(map);
-            
+
+            map._regionsLayer = geoJsonLayer;
             console.log('Régions chargées:', data.features.length);
+            return geoJsonLayer;
         })
         .catch(error => {
             console.error('Erreur chargement:', error);

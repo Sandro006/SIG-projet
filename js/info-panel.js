@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const DATA_URLS = ["data/mock_faune_flore.json", "data/faune_flore.json"];
+  const DATA_URLS = ["data/faune_flore.json", "data/faune_flore.json"];
   let cachedFaunaFloreData = null;
 
   function escapeHtml(value) {
@@ -170,8 +170,11 @@
   function getRegionNameFromFeature(feature) {
     const properties = feature?.properties || {};
 
+    // Les champs de nom de régions peuvent varier selon le GeoJSON.
+    // On tente plusieurs clés courantes pour maximiser la correspondance avec data/faune_flore.json.
     return (
       properties.nom_region ||
+      properties.NAME_2 ||
       properties.NAME_1 ||
       ""
     );
@@ -200,4 +203,6 @@
   window.showConservationBadge = showConservationBadge;
   window.closePanel = closePanel;
   window.handleRegionClick = handleRegionClick;
+  window.getRegionNameFromFeature = getRegionNameFromFeature;
+  window.loadFaunaFloreData = loadFaunaFloreData;
 })();

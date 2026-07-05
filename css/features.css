@@ -1,0 +1,43 @@
+/* Légende carte */
+.map-legend {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  padding: 10px 12px;
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  color: #23312b;
+  max-width: 220px;
+}
+
+.map-legend__title {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  margin-bottom: 8px;
+}
+
+.map-legend__items {
+  display: grid;
+  gap: 6px;
+}
+
+.map-legend__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.map-legend__swatch {
+  width: 18px;
+  height: 12px;
+  border-radius: 3px;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.map-legend__label {
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
