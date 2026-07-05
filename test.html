@@ -1,33 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Test Personne 3 - Carte Madagascar</title>
     <link rel="stylesheet" href="css/leaflet.css" />
-    <link rel="stylesheet" href="css/map.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/map.css" />
+    <link rel="stylesheet" href="css/panel.css" />
+    <link rel="stylesheet" href="css/features.css" />
+  </head>
+  <body>
+    <div id="controls" class="map-controls">
+      <select id="category-filter">
+        <option value="">Toutes les régions</option>
+        <option value="faune">Faune</option>
+        <option value="flore">Flore</option>
+        <option value="aires_protegees">Aires protégées</option>
+      </select>
+      <input
+        id="species-search"
+        type="text"
+        placeholder="Rechercher une espèce..."
+      />
+    </div>
     <div id="map"></div>
 
     <script src="js/leaflet.js"></script>
     <script src="js/map-init.js"></script>
-    
+    <script src="js/info-panel.js"></script>
+    <script src="js/features.js"></script>
+
     <script>
-        // Initialiser la carte
-        const map = initMap();
-        loadBaseLayer(map);
-        
-        // Callback pour le clic (mettrer la fonction onRegionClick ici pour la personne 4)
-        function onRegionClick(feature) {
-            const nom = feature.properties.nom_region || feature.properties.NAME_2 || "Inconnue";
-            alert('🦎 Région: ' + nom);
-            console.log('Région cliquée:', nom);
+      // Initialiser la carte
+      const map = initMap();
+      loadBaseLayer(map);
+
+      // Callback pour le clic => affiche le panneau info (faune/flore)
+      // info-panel.js expose window.handleRegionClick(feature, layer)
+      function onRegionClick(feature, layer) {
+        if (typeof window.handleRegionClick === "function") {
+          window.handleRegionClick(feature, layer);
         }
-        
-        // Charger les régions
-        loadRegionsLayer(map, './data/regions_madagascar.json', onRegionClick);
-        
-        console.log(' Carte initialisée !');
+      }
+
+      // Charger les régions
+      loadRegionsLayer(map, "./data/regions_madagascar.json", onRegionClick);
+      let regionsLayer = null; // à récupérer depuis loadRegionsLayer
+      let allRegionsData = null; // le JSON chargé
+
+      document
+        .getElementById("category-filter")
+        .addEventListener("change", (e) => {
+          const { visibleRegions, colorByRegion } = filterByCategory(
+            e.target.value,
+            allRegionsData,
+          );
+          regionsLayer.eachLayer((layer) => {
+            const name = getRegionNameFromFeature(layer.feature);
+            const visible = !e.target.value || visibleRegions.includes(name);
+            layer.setStyle({
+              opacity: visible ? 1 : 0.1,
+              fillOpacity: visible ? 0.5 : 0.05,
+              fillColor: colorByRegion[name] || "#8a8a8a",
+            });
+          });
+        });
+
+      document
+        .getElementById("species-search")
+        .addEventListener("input", (e) => {
+          const { matches } = searchSpecies(e.target.value, allRegionsData);
+          const matchNames = matches.map((m) => m.region);
+          regionsLayer.eachLayer((layer) => {
+            const name = getRegionNameFromFeature(layer.feature);
+            layer.setStyle({ opacity: matchNames.includes(name) ? 1 : 0.15 });
+          });
+        });
+
+      buildLegend(map, null); // à appeler une fois la carte prête
+      console.log(" Carte initialisée !");
     </script>
-</body>
+  </body>
 </html>
