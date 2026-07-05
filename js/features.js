@@ -34,8 +34,6 @@
   }
 
   function getColorByEndemisme(tauxEndemisme) {
-    // colorScale attendu: { stops: [{min,max,color}], defaultColor }
-    // Ici on supporte un format simple: critique/vulnerable/stable selon %.
     const v = parseEndemisme(tauxEndemisme);
     if (v === null) return "#8a8a8a";
 
@@ -46,6 +44,35 @@
     return "#d73027"; // rouge
   }
 
+  /**
+   * Extrait les noms d'espèces d'une région (supporte les deux formats)
+   */
+  function extractSpeciesNames(regionData) {
+    if (!regionData) return [];
+    const species = regionData.especes_emblematiques || [];
+    return species.map((item) => {
+      if (typeof item === 'object' && item.nom) return item.nom;
+      if (typeof item === 'string') return item;
+      return String(item);
+    });
+  }
+
+  /**
+   * Extrait les clés de photos d'une région
+   */
+  function extractPhotoKeys(regionData) {
+    if (!regionData) return [];
+    const species = regionData.especes_emblematiques || [];
+    return species.map((item) => {
+      if (typeof item === 'object' && item.photos && Array.isArray(item.photos)) {
+        return item.photos[0] || item.nom;
+      }
+      if (typeof item === 'object' && item.nom) return item.nom;
+      if (typeof item === 'string') return item;
+      return String(item);
+    });
+  }
+
   // --- API demandée par le TODO ---
 
   /**
@@ -53,31 +80,47 @@
    * @param {object} map Leaflet map
    * @param {{stops?: Array<{label?:string,min?:number,max?:number,color:string}>, defaultColor?:string}} colorScale
    */
-  function buildLegend(map, colorScale) {
-    if (!map) return;
+function buildLegend(map, colorScale) {
+  if (!map) return;
 
-    const stops = Array.isArray(colorScale?.stops)
-      ? colorScale.stops
-      : [
-          { label: "< 60", min: 0, max: 60, color: "#2c7fb8" },
-          { label: "60-75", min: 60, max: 75, color: "#7fcdbb" },
-          { label: "75-90", min: 75, max: 90, color: "#fdae61" },
-          { label: ">= 90", min: 90, max: 100, color: "#d73027" },
-        ];
+  const stops = Array.isArray(colorScale?.stops)
+    ? colorScale.stops
+    : [
+        { label: "< 60%", min: 0, max: 60, color: "#2c7fb8" },
+        { label: "60-75%", min: 60, max: 75, color: "#7fcdbb" },
+        { label: "75-90%", min: 75, max: 90, color: "#fdae61" },
+        { label: "≥ 90%", min: 90, max: 100, color: "#d73027" },
+      ];
 
-    const defaultColor = colorScale?.defaultColor || "#8a8a8a";
+  const defaultColor = colorScale?.defaultColor || "#8a8a8a";
 
-    // Empêche les doublons
-    if (map._featuresLegendEl) {
-      map._featuresLegendEl.remove();
-      map._featuresLegendEl = null;
-    }
+  // Empêche les doublons
+  if (map._featuresLegendEl) {
+    map._featuresLegendEl.remove();
+    map._featuresLegendEl = null;
+  }
 
-    const legend = document.createElement("div");
-    legend.className = "map-legend";
+  const legend = document.createElement("div");
+  legend.className = "map-legend";
 
-    legend.innerHTML = `
-      <div class="map-legend__title">Endémisme</div>
+  // Générer le gradient
+  const gradientColors = stops.map(s => s.color).join(', ');
+
+  legend.innerHTML = `
+    <div class="map-legend__title">🌿 Taux d'endémisme</div>
+    
+    <div class="map-legend__gradient">
+      ${stops.map((s) => `
+        <div class="map-legend__gradient-stop" style="background:${s.color}"></div>
+      `).join('')}
+    </div>
+    <div class="map-legend__gradient-labels">
+      <span>0%</span>
+      <span>50%</span>
+      <span>100%</span>
+    </div>
+
+    <div style="margin-top: 10px; border-top: 1px solid rgba(30,43,34,0.08); padding-top: 10px;">
       <div class="map-legend__items">
         ${stops
           .map(
@@ -85,34 +128,33 @@
               <div class="map-legend__row">
                 <span class="map-legend__swatch" style="background:${s.color || defaultColor}"></span>
                 <span class="map-legend__label">${s.label || ""}</span>
+                <span class="map-legend__value">${s.min || 0}–${s.max || 100}%</span>
               </div>
             `
           )
           .join("")}
       </div>
-    `;
+    </div>
+  `;
 
-    // Leaflet Control (plus fiable que d'insérer directement)
-    // On n'utilise pas L.control si absent (tests console)
-    if (typeof window.L?.control?.position === "function" || typeof window.L?.control === "object") {
-      const control = window.L.control({ position: "bottomright" });
-      control.onAdd = function () {
-        map._featuresLegendEl = legend;
-        return legend;
-      };
-      control.addTo(map);
-      map._featuresLegendControl = control;
-    } else {
-      // fallback: append body
-      document.body.appendChild(legend);
+  // Leaflet Control
+  if (typeof window.L?.control === "object") {
+    const control = window.L.control({ position: "bottomright" });
+    control.onAdd = function () {
       map._featuresLegendEl = legend;
-    }
+      return legend;
+    };
+    control.addTo(map);
+    map._featuresLegendControl = control;
+  } else {
+    document.body.appendChild(legend);
+    map._featuresLegendEl = legend;
   }
+}
 
   /**
    * Filtre/recolore les régions selon une thématique.
-   * Fonction "logique" : renvoie la liste des régions visibles et une couleur par région.
-   * @param {string} category "faune" | "flore" | "aires protégées" | "aires_protegees" | etc.
+   * @param {string} category "faune" | "flore" | "aires_protegees" | "menaces"
    * @param {object} allRegionsData JSON complet
    * @returns {{visibleRegions: string[], colorByRegion: Record<string,string>}}
    */
@@ -120,17 +162,27 @@
     const cat = normalizeText(category);
     const allKeys = allRegionsData && typeof allRegionsData === "object" ? Object.keys(allRegionsData) : [];
 
-    // Sur les mocks, on ne distingue pas faune vs flore : on utilise un heuristique sur le champ.
-    // - faune: présence des mots "Lémur" ou "Indri" etc.
-    // - flore: présence de mots "Orchid" "Baobab" "Pachypodium" ...
-    // - aires protégées: priorité à "aires_protegees" non vide
-
-    const faunaHints = ["lemur", "indri", "sifaka", "aye", "pteropus", "pangolin", "chameleon", "phelsuma", "fandranganana", "oustalet"];
-    const floreHints = ["orchid", "baobab", "pachypodium", "ravenala", "angraecum", "foug", "euphor" ,"rosulatum", "lineata", "barbouri", "madagascariensis"]; 
+    // Mots-clés pour la faune et la flore (basés sur les noms d'espèces)
+    const faunaHints = [
+      "lemur", "indri", "sifaka", "aye", "pteropus", "pangolin", 
+      "chameleon", "phelsuma", "fandranganana", "oustalet", "tangue",
+      "tenrec", "maki", "catta", "propithecus", "daubentonia",
+      "lepilemur", "heterixalus", "gecko", "grenouille"
+    ];
+    
+    const floreHints = [
+      "orchid", "baobab", "pachypodium", "ravenala", "angraecum",
+      "foug", "euphor", "rosulatum", "lineata", "barbouri",
+      "madagascariensis", "bambou", "bambusa", "cyathea", "adansonia"
+    ];
 
     function containsAny(str, hints) {
       const s = normalizeText(str);
       return hints.some((h) => s.includes(normalizeText(h)));
+    }
+
+    function getSpeciesNames(regionData) {
+      return extractSpeciesNames(regionData).join(" ");
     }
 
     const visible = [];
@@ -138,7 +190,7 @@
 
     for (const regionName of allKeys) {
       const d = allRegionsData[regionName] || {};
-      const species = Array.isArray(d.especes_emblematiques) ? d.especes_emblematiques.join(" ") : "";
+      const species = getSpeciesNames(d);
       const threats = Array.isArray(d.menaces) ? d.menaces.join(" ") : "";
       const protectedAreas = Array.isArray(d.aires_protegees) ? d.aires_protegees.join(" ") : "";
 
@@ -165,9 +217,10 @@
 
   /**
    * Cherche une espèce dans toutes les régions.
+   * Supporte la recherche dans les noms d'espèces (objets ou chaînes)
    * @param {string} query
    * @param {object} allRegionsData
-   * @returns {{species:string, matches: Array<{region:string}>}} 
+   * @returns {{species:string, matches: Array<{region:string, species: string}>}} 
    */
   function searchSpecies(query, allRegionsData) {
     const q = normalizeText(query);
@@ -178,9 +231,19 @@
 
     for (const regionName of keys) {
       const d = allRegionsData[regionName];
-      const species = Array.isArray(d?.especes_emblematiques) ? d.especes_emblematiques : [];
-      const hit = species.some((sp) => normalizeText(sp).includes(q));
-      if (hit) res.push({ region: regionName });
+      const species = extractSpeciesNames(d);
+      
+      // Trouver les espèces qui correspondent
+      const matchingSpecies = species.filter((sp) => normalizeText(sp).includes(q));
+      
+      if (matchingSpecies.length > 0) {
+        matchingSpecies.forEach((sp) => {
+          res.push({ 
+            region: regionName, 
+            species: sp 
+          });
+        });
+      }
     }
 
     return { species: query, matches: res };
@@ -204,6 +267,17 @@
     const a = pick(regionA);
     const b = pick(regionB);
 
+    // Extraire les espèces communes et uniques
+    const speciesA = extractSpeciesNames(a);
+    const speciesB = extractSpeciesNames(b);
+    
+    const setA = new Set(speciesA);
+    const setB = new Set(speciesB);
+    
+    const common = speciesA.filter((s) => setB.has(s));
+    const uniqueA = speciesA.filter((s) => !setB.has(s));
+    const uniqueB = speciesB.filter((s) => !setA.has(s));
+
     return {
       regionA,
       regionB,
@@ -213,16 +287,58 @@
       taux_endemisme_B: b?.taux_endemisme ?? null,
       couleurA: getColorByEndemisme(a?.taux_endemisme),
       couleurB: getColorByEndemisme(b?.taux_endemisme),
+      // Ajout d'informations comparatives supplémentaires
+      speciesCountA: speciesA.length,
+      speciesCountB: speciesB.length,
+      commonSpecies: common,
+      uniqueSpeciesA: uniqueA,
+      uniqueSpeciesB: uniqueB,
+      statutA: a?.statut_conservation ?? null,
+      statutB: b?.statut_conservation ?? null,
     };
   }
 
-  // Exposition globale (pour console + intégration tardive)
+  /**
+   * Récupère toutes les espèces uniques présentes dans les données
+   * @param {object} allRegionsData
+   * @returns {Array<{nom: string, regions: string[], photoKey: string}>}
+   */
+  function getAllUniqueSpecies(allRegionsData) {
+    const speciesMap = new Map();
+    const keys = allRegionsData && typeof allRegionsData === "object" ? Object.keys(allRegionsData) : [];
+
+    for (const regionName of keys) {
+      const d = allRegionsData[regionName];
+      const speciesList = d?.especes_emblematiques || [];
+      
+      speciesList.forEach((item) => {
+        const nom = typeof item === 'object' ? item.nom : item;
+        const photoKey = typeof item === 'object' && item.photos?.length > 0 
+          ? item.photos[0] 
+          : nom;
+        
+        if (!speciesMap.has(nom)) {
+          speciesMap.set(nom, {
+            nom: nom,
+            photoKey: photoKey,
+            regions: []
+          });
+        }
+        speciesMap.get(nom).regions.push(regionName);
+      });
+    }
+
+    return Array.from(speciesMap.values());
+  }
+
+  // Exposition globale
   window.buildLegend = buildLegend;
   window.filterByCategory = filterByCategory;
   window.searchSpecies = searchSpecies;
   window.compareRegions = compareRegions;
   window.getColorByEndemisme = getColorByEndemisme;
+  window.extractSpeciesNames = extractSpeciesNames;
+  window.extractPhotoKeys = extractPhotoKeys;
+  window.getAllUniqueSpecies = getAllUniqueSpecies;
 
-  // Export optionnel (CommonJS/ESM) non nécessaire ici.
 })();
-

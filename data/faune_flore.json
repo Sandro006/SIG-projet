@@ -1,9 +1,18 @@
 {
   "Alaotra-Mangoro": {
     "especes_emblematiques": [
-      "Indri indri",
-      "Lémurien aye-aye",
-      "Orchidée Angraecum sesquipedale"
+      {
+        "nom": "Indri indri",
+        "photos": ["Indri indri"]
+      },
+      {
+        "nom": "Lémurien aye-aye",
+        "photos": ["Daubentonia madagascariensis"]
+      },
+      {
+        "nom": "Orchidée Angraecum sesquipedale",
+        "photos": ["Angraecum sesquipedale"]
+      }
     ],
     "taux_endemisme": "80-90%",
     "menaces": [
@@ -19,9 +28,18 @@
   },
   "Amoron'i Mania": {
     "especes_emblematiques": [
-      "Lémurien sifaka de Coquerel",
-      "Phelsuma grandis",
-      "Baobab de Grandidier"
+      {
+        "nom": "Lémurien sifaka de Coquerel",
+        "photos": ["Propithecus coquereli"]
+      },
+      {
+        "nom": "Phelsuma grandis",
+        "photos": ["Phelsuma grandis"]
+      },
+      {
+        "nom": "Baobab de Grandidier",
+        "photos": ["Adansonia grandidieri"]
+      }
     ],
     "taux_endemisme": "70-80%",
     "menaces": [
@@ -36,9 +54,18 @@
   },
   "Analamanga": {
     "especes_emblematiques": [
-      "Indri indri",
-      "Maki catta",
-      "Tangue de Madagascar"
+      {
+        "nom": "Indri indri",
+        "photos": ["Indri indri"]
+      },
+      {
+        "nom": "Maki catta",
+        "photos": ["Lemur catta"]
+      },
+      {
+        "nom": "Tangue de Madagascar",
+        "photos": ["Tenrec ecaudatus"]
+      }
     ],
     "taux_endemisme": "75-85%",
     "menaces": [
@@ -54,9 +81,18 @@
   },
   "Analanjirofo": {
     "especes_emblematiques": [
-      "Lémurien indri",
-      "Chameleon Oustalet's",
-      "Fandranganana"
+      {
+        "nom": "Lémurien indri",
+        "photos": ["Indri indri"]
+      },
+      {
+        "nom": "Caméléon de Oustalet",
+        "photos": ["Furcifer oustaleti"]
+      },
+      {
+        "nom": "Fandranganana",
+        "photos": ["Heliconia rostrata"]
+      }
     ],
     "taux_endemisme": "85-95%",
     "menaces": [
@@ -72,9 +108,18 @@
   },
   "Androy": {
     "especes_emblematiques": [
-      "Lémurien de Madagascar",
-      "Baobab de Madagascar",
-      "Plectrohyla madagascariensis"
+      {
+        "nom": "Lémurien de Madagascar",
+        "photos": ["Lemur catta"]
+      },
+      {
+        "nom": "Baobab de Madagascar",
+        "photos": ["Adansonia grandidieri"]
+      },
+      {
+        "nom": "Plectrohyla madagascariensis",
+        "photos": ["Heterixalus madagascariensis"]
+      }
     ],
     "taux_endemisme": "60-70%",
     "menaces": [
@@ -89,9 +134,18 @@
   },
   "Anosy": {
     "especes_emblematiques": [
-      "Lémurien sifaka",
-      "Pachypodium rosulatum",
-      "Faux baobab"
+      {
+        "nom": "Lémurien sifaka",
+        "photos": ["Propithecus verreauxi"]
+      },
+      {
+        "nom": "Pachypodium rosulatum",
+        "photos": ["Pachypodium rosulatum"]
+      },
+      {
+        "nom": "Faux baobab",
+        "photos": ["Adansonia za"]
+      }
     ],
     "taux_endemisme": "80-90%",
     "menaces": [
@@ -107,9 +161,18 @@
   },
   "Atsimo-Andrefana": {
     "especes_emblematiques": [
-      "Baobab de Grandidier",
-      "Lémurien sportive",
-      "Pachypodium geayi"
+      {
+        "nom": "Baobab de Grandidier",
+        "photos": ["Adansonia grandidieri"]
+      },
+      {
+        "nom": "Lépilemur ruficaudatus",
+        "photos": ["Lepilemur ruficaudatus"]
+      },
+      {
+        "nom": "Pachypodium geayi",
+        "photos": ["Pachypodium geayi"]
+      }
     ],
     "taux_endemisme": "75-85%",
     "menaces": [
@@ -125,9 +188,18 @@
   },
   "Atsimo-Atsinanana": {
     "especes_emblematiques": [
-      "Lémurien aye-aye",
-      "Faux baobab",
-      "Fougère arborescente"
+      {
+        "nom": "Lémurien aye-aye",
+        "photos": ["Daubentonia madagascariensis"]
+      },
+      {
+        "nom": "Faux baobab",
+        "photos": ["Adansonia za"]
+      },
+      {
+        "nom": "Fougère arborescente",
+        "photos": ["Cyathea australis"]
+      }
     ],
     "taux_endemisme": "70-80%",
     "menaces": [
@@ -142,9 +214,18 @@
   },
   "Betsiboka": {
     "especes_emblematiques": [
-      "Lémurien indri",
-      "Pteropus rufus",
-      "Orchidée Angraecum"
+      {
+        "nom": "Lémurien indri",
+        "photos": ["Indri indri"]
+      },
+      {
+        "nom": "Pteropus rufus",
+        "photos": ["Pteropus rufus"]
+      },
+      {
+        "nom": "Orchidée Angraecum",
+        "photos": ["Angraecum"]
+      }
     ],
     "taux_endemisme": "65-75%",
     "menaces": [
@@ -159,9 +240,18 @@
   },
   "Boeny": {
     "especes_emblematiques": [
-      "Lémurien de Madagascar",
-      "Pangolin de Madagascar",
-      "Baobab"
+      {
+        "nom": "Lémurien de Madagascar",
+        "photos": ["Lemur catta"]
+      },
+      {
+        "nom": "Pangolin de Madagascar",
+        "photos": ["Smutsia gigantea"]
+      },
+      {
+        "nom": "Baobab",
+        "photos": ["Adansonia"]
+      }
     ],
     "taux_endemisme": "60-70%",
     "menaces": [
@@ -176,9 +266,18 @@
   },
   "Bongolava": {
     "especes_emblematiques": [
-      "Maki catta",
-      "Chameleon Furcifer",
-      "Pachypodium lamerei"
+      {
+        "nom": "Maki catta",
+        "photos": ["Lemur catta"]
+      },
+      {
+        "nom": "Caméléon Furcifer",
+        "photos": ["Furcifer"]
+      },
+      {
+        "nom": "Pachypodium lamerei",
+        "photos": ["Pachypodium lamerei"]
+      }
     ],
     "taux_endemisme": "70-80%",
     "menaces": [
@@ -193,9 +292,18 @@
   },
   "Diana": {
     "especes_emblematiques": [
-      "Lémurien sifaka",
-      "Phelsuma lineata",
-      "Baobab de Madagascar"
+      {
+        "nom": "Lémurien sifaka",
+        "photos": ["Propithecus verreauxi"]
+      },
+      {
+        "nom": "Phelsuma lineata",
+        "photos": ["Phelsuma lineata"]
+      },
+      {
+        "nom": "Baobab de Madagascar",
+        "photos": ["Adansonia grandidieri"]
+      }
     ],
     "taux_endemisme": "75-85%",
     "menaces": [
@@ -211,9 +319,18 @@
   },
   "Haute Matsiatra": {
     "especes_emblematiques": [
-      "Indri indri",
-      "Lémurien sifaka",
-      "Bambou de Madagascar"
+      {
+        "nom": "Indri indri",
+        "photos": ["Indri indri"]
+      },
+      {
+        "nom": "Lémurien sifaka",
+        "photos": ["Propithecus verreauxi"]
+      },
+      {
+        "nom": "Bambou de Madagascar",
+        "photos": ["Bambusa vulgaris"]
+      }
     ],
     "taux_endemisme": "80-90%",
     "menaces": [
@@ -228,9 +345,18 @@
   },
   "Ihorombe": {
     "especes_emblematiques": [
-      "Baobab de Grandidier",
-      "Lémurien de Madagascar",
-      "Euphorbe malgache"
+      {
+        "nom": "Baobab de Grandidier",
+        "photos": ["Adansonia grandidieri"]
+      },
+      {
+        "nom": "Lémurien de Madagascar",
+        "photos": ["Lemur catta"]
+      },
+      {
+        "nom": "Euphorbe malgache",
+        "photos": ["Euphorbia"]
+      }
     ],
     "taux_endemisme": "65-75%",
     "menaces": [
@@ -245,9 +371,18 @@
   },
   "Itasy": {
     "especes_emblematiques": [
-      "Maki catta",
-      "Phelsuma madagascariensis",
-      "Ravenala madagascariensis"
+      {
+        "nom": "Maki catta",
+        "photos": ["Lemur catta"]
+      },
+      {
+        "nom": "Phelsuma madagascariensis",
+        "photos": ["Phelsuma madagascariensis"]
+      },
+      {
+        "nom": "Ravenala madagascariensis",
+        "photos": ["Ravenala madagascariensis"]
+      }
     ],
     "taux_endemisme": "70-80%",
     "menaces": [
@@ -262,9 +397,18 @@
   },
   "Melaky": {
     "especes_emblematiques": [
-      "Baobab de Grandidier",
-      "Lémurien aye-aye",
-      "Pachypodium namaquanum"
+      {
+        "nom": "Baobab de Grandidier",
+        "photos": ["Adansonia grandidieri"]
+      },
+      {
+        "nom": "Lémurien aye-aye",
+        "photos": ["Daubentonia madagascariensis"]
+      },
+      {
+        "nom": "Pachypodium namaquanum",
+        "photos": ["Pachypodium namaquanum"]
+      }
     ],
     "taux_endemisme": "60-70%",
     "menaces": [
@@ -279,9 +423,18 @@
   },
   "Menabe": {
     "especes_emblematiques": [
-      "Baobab de Grandidier",
-      "Lémurien sifaka",
-      "Faux baobab"
+      {
+        "nom": "Baobab de Grandidier",
+        "photos": ["Adansonia grandidieri"]
+      },
+      {
+        "nom": "Lémurien sifaka",
+        "photos": ["Propithecus verreauxi"]
+      },
+      {
+        "nom": "Faux baobab",
+        "photos": ["Adansonia za"]
+      }
     ],
     "taux_endemisme": "80-90%",
     "menaces": [
@@ -297,9 +450,18 @@
   },
   "Sava": {
     "especes_emblematiques": [
-      "Lémurien indri",
-      "Chameleon Furcifer",
-      "Orchidée Angraecum"
+      {
+        "nom": "Lémurien indri",
+        "photos": ["Indri indri"]
+      },
+      {
+        "nom": "Caméléon Furcifer",
+        "photos": ["Furcifer"]
+      },
+      {
+        "nom": "Orchidée Angraecum",
+        "photos": ["Angraecum"]
+      }
     ],
     "taux_endemisme": "85-95%",
     "menaces": [
@@ -315,9 +477,18 @@
   },
   "Sofia": {
     "especes_emblematiques": [
-      "Indri indri",
-      "Lémurien aye-aye",
-      "Ravenala madagascariensis"
+      {
+        "nom": "Indri indri",
+        "photos": ["Indri indri"]
+      },
+      {
+        "nom": "Lémurien aye-aye",
+        "photos": ["Daubentonia madagascariensis"]
+      },
+      {
+        "nom": "Ravenala madagascariensis",
+        "photos": ["Ravenala madagascariensis"]
+      }
     ],
     "taux_endemisme": "75-85%",
     "menaces": [
@@ -332,9 +503,18 @@
   },
   "Vatovavy-Fitovinany": {
     "especes_emblematiques": [
-      "Indri indri",
-      "Maki catta",
-      "Phelsuma barbouri"
+      {
+        "nom": "Indri indri",
+        "photos": ["Indri indri"]
+      },
+      {
+        "nom": "Maki catta",
+        "photos": ["Lemur catta"]
+      },
+      {
+        "nom": "Phelsuma barbouri",
+        "photos": ["Phelsuma barbouri"]
+      }
     ],
     "taux_endemisme": "80-90%",
     "menaces": [
@@ -350,9 +530,18 @@
   },
   "Vakinankaratra": {
     "especes_emblematiques": [
-      "Lémurien sifaka",
-      "Orchidée Angraecum",
-      "Baobab de Madagascar"
+      {
+        "nom": "Lémurien sifaka",
+        "photos": ["Propithecus verreauxi"]
+      },
+      {
+        "nom": "Orchidée Angraecum",
+        "photos": ["Angraecum"]
+      },
+      {
+        "nom": "Baobab de Madagascar",
+        "photos": ["Adansonia grandidieri"]
+      }
     ],
     "taux_endemisme": "70-80%",
     "menaces": [
@@ -367,9 +556,18 @@
   },
   "Atsinanana": {
     "especes_emblematiques": [
-      "Indri indri",
-      "Lémurien aye-aye",
-      "Phelsuma lineata"
+      {
+        "nom": "Indri indri",
+        "photos": ["Indri indri"]
+      },
+      {
+        "nom": "Lémurien aye-aye",
+        "photos": ["Daubentonia madagascariensis"]
+      },
+      {
+        "nom": "Phelsuma lineata",
+        "photos": ["Phelsuma lineata"]
+      }
     ],
     "taux_endemisme": "80-90%",
     "menaces": [
