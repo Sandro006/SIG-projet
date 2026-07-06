@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+/* --- Barre de contrôles (filtre + recherche) --- */
+
+.map-controls {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #f7f3e8;
+  border: 1px solid #ddd3ba;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(20, 30, 24, 0.16);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-width: 220px;
+  max-width: 300px;
+}
+
+.map-controls__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.map-controls select,
+.map-controls input {
+  height: 34px;
+  padding: 0 10px;
+  color: #1e2b22;
+  background: #ffffff;
+  border: 1px solid #ddd3ba;
+  border-radius: 4px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.86rem;
+  outline: none;
+  transition: border-color 150ms ease;
+  flex: 1;
+}
+
+.map-controls select {
+  cursor: pointer;
+}
+
+.map-controls input {
+  min-width: 140px;
+}
+
+.map-controls select:focus,
+.map-controls input:focus {
+  border-color: #1f4d38;
+}
+
+.map-controls input::placeholder {
+  color: #9a998c;
+}
+
+/* --- Légende intégrée en bas du filtre --- */
+
+.map-legend {
+  width: 100%;
+  margin-top: 4px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(30, 43, 34, 0.12);
+  border-radius: 6px;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #1e2b22;
+  transition: box-shadow 0.2s ease;
+}
+
+.map-legend:hover {
+  box-shadow: 0 4px 12px rgba(20, 30, 24, 0.1);
+}
+
+.map-legend__title {
+  margin: 0 0 8px 0;
+  color: #4a5a50;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.map-legend__title::before {
+  content: '🌿';
+  font-size: 0.85rem;
+}
+
+.map-legend__gradient {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0 0 4px 0;
+  border: 1px solid rgba(30, 43, 34, 0.08);
+}
+
+.map-legend__gradient-stop {
+  flex: 1;
+  height: 100%;
+}
+
+.map-legend__gradient-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6rem;
+  color: #6b7a70;
+  font-weight: 500;
+  padding: 0 2px;
+  margin-bottom: 6px;
+}
+
+.map-legend__items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 12px;
+  margin-top: 6px;
+  border-top: 1px solid rgba(30, 43, 34, 0.06);
+  padding-top: 8px;
+}
+
+.map-legend__row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+  border-radius: 3px;
+  transition: background 0.15s ease;
+}
+
+.map-legend__row:hover {
+  background: rgba(30, 43, 34, 0.04);
+}
+
+.map-legend__swatch {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(30, 43, 34, 0.15);
+  border-radius: 3px;
+  transition: transform 0.15s ease;
+}
+
+.map-legend__row:hover .map-legend__swatch {
+  transform: scale(1.1);
+}
+
+.map-legend__label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #2d3a32;
+  line-height: 1.2;
+}
+
+.map-legend__value {
+  margin-left: auto;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: #6b7a70;
+  background: rgba(30, 43, 34, 0.05);
+  padding: 1px 6px;
+  border-radius: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* --- Version compacte pour mobile --- */
+
+@media (max-width: 640px) {
+  .map-controls {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    padding: 10px 12px;
+    min-width: unset;
+    max-width: unset;
+  }
+
+  .map-controls__row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .map-controls select,
+  .map-controls input {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .map-legend {
+    padding: 10px 12px;
+  }
+
+  .map-legend__items {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+
+  .map-legend__swatch {
+    width: 10px;
+    height: 10px;
+  }
+
+  .map-legend__label {
+    font-size: 0.7rem;
+  }
+}
+
+/* --- Animation d'apparition --- */
+
+.map-legend {
+  animation: legendSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes legendSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

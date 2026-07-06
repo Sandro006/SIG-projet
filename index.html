@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test Personne 3 - Carte Madagascar</title>
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/map.css">
+    <link rel="stylesheet" href="css/panel.css">
+    <link rel="stylesheet" href="css/features.css">
+</head>
+<body>
+    <div id="controls" class="map-controls">
+        <div class="map-controls__row">
+            <select id="category-filter">
+                <option value="">Toutes les régions</option>
+                <option value="faune">Faune</option>
+                <option value="flore">Flore</option>
+                <option value="aires_protegees">Aires protégées</option>
+            </select>
+            <input id="species-search" type="text" placeholder="Rechercher une espèce...">
+        </div>
+        <!-- La légende sera insérée ici par JavaScript -->
+        <div id="legend-container"></div>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="js/leaflet.js"></script>
+    <script src="js/map-init.js"></script>
+    <script src="js/info-panel.js"></script>
+    <script src="js/features.js"></script>
+
+    <script>
+        // Initialiser la carte
+        const map = initMap();
+        loadBaseLayer(map);
+
+        let allRegionsData = null;
+
+        // Callback pour le clic => affiche le panneau info
+        function onRegionClick(feature, layer) {
+            if (typeof window.handleRegionClick === 'function') {
+                window.handleRegionClick(feature, layer);
+            }
+        }
+
+        function applyStyleToRegion(layer, regionName, visible, colorByRegion) {
+            const nextStyle = {
+                fillColor: colorByRegion[regionName] || '#4CAF50',
+                fillOpacity: visible ? 0.6 : 0.05,
+                color: visible ? '#2E7D32' : '#999999',
+                weight: 2,
+                opacity: visible ? 1 : 0.2
+            };
+            layer._currentStyle = nextStyle;
+            layer.setStyle(nextStyle);
+        }
+
+        // Charger en parallèle la couche des régions et les données faune/flore
+        Promise.all([
+            loadRegionsLayer(map, './data/regions_madagascar.json', onRegionClick),
+            window.loadFaunaFloreData().then((data) => { allRegionsData = data; })
+        ]).then(() => {
+            // Afficher la légende dans le conteneur
+            const legendContainer = document.getElementById('legend-container');
+            if (legendContainer) {
+                // Construire la légende manuellement
+                const legendHtml = `
+                    <div class="map-legend">
+                        <div class="map-legend__title">Taux d'endémisme</div>
+                        <div class="map-legend__gradient">
+                            <div class="map-legend__gradient-stop" style="background:#2c7fb8"></div>
+                            <div class="map-legend__gradient-stop" style="background:#7fcdbb"></div>
+                            <div class="map-legend__gradient-stop" style="background:#fdae61"></div>
+                            <div class="map-legend__gradient-stop" style="background:#d73027"></div>
+                        </div>
+                        <div class="map-legend__gradient-labels">
+                            <span>0%</span>
+                            <span>50%</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="map-legend__items">
+                            <div class="map-legend__row">
+                                <span class="map-legend__swatch" style="background:#2c7fb8"></span>
+                                <span class="map-legend__label">&lt; 60%</span>
+                                <span class="map-legend__value">0–60</span>
+                            </div>
+                            <div class="map-legend__row">
+                                <span class="map-legend__swatch" style="background:#7fcdbb"></span>
+                                <span class="map-legend__label">60–75%</span>
+                                <span class="map-legend__value">60–75</span>
+                            </div>
+                            <div class="map-legend__row">
+                                <span class="map-legend__swatch" style="background:#fdae61"></span>
+                                <span class="map-legend__label">75–90%</span>
+                                <span class="map-legend__value">75–90</span>
+                            </div>
+                            <div class="map-legend__row">
+                                <span class="map-legend__swatch" style="background:#d73027"></span>
+                                <span class="map-legend__label">≥ 90%</span>
+                                <span class="map-legend__value">90–100</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                legendContainer.innerHTML = legendHtml;
+            }
+
+            // Gestionnaire du filtre
+            document.getElementById('category-filter').addEventListener('change', (e) => {
+                const category = e.target.value;
+
+                if (!category) {
+                    map._regionsLayer.eachLayer((layer) => {
+                        layer._currentStyle = styleRegion(layer.feature);
+                        layer.setStyle(layer._currentStyle);
+                    });
+                    return;
+                }
+
+                const { visibleRegions, colorByRegion } = filterByCategory(category, allRegionsData);
+
+                map._regionsLayer.eachLayer((layer) => {
+                    const regionName = window.getRegionNameFromFeature(layer.feature);
+                    const visible = visibleRegions.includes(regionName);
+                    applyStyleToRegion(layer, regionName, visible, colorByRegion);
+                });
+            });
+
+            // Gestionnaire de recherche
+            document.getElementById('species-search').addEventListener('input', (e) => {
+                const query = e.target.value.trim();
+
+                if (!query) {
+                    map._regionsLayer.eachLayer((layer) => {
+                        layer._currentStyle = styleRegion(layer.feature);
+                        layer.setStyle(layer._currentStyle);
+                    });
+                    return;
+                }
+
+                const { matches } = searchSpecies(query, allRegionsData);
+                const matchNames = matches.map((m) => m.region);
+
+                map._regionsLayer.eachLayer((layer) => {
+                    const regionName = window.getRegionNameFromFeature(layer.feature);
+                    const visible = matchNames.includes(regionName);
+                    applyStyleToRegion(layer, regionName, visible, {});
+                });
+            });
+
+            console.log('Carte initialisée !');
+        });
+    </script>
+</body>
+</html>

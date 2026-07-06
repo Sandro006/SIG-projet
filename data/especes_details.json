@@ -1,0 +1,200 @@
+{
+  "Indri indri": {
+    "nom_scientifique": "Indri indri",
+    "nom_commun": "Indri",
+    "description": "Le plus grand lémurien vivant. Endémique de Madagascar, il est caractérisé par son cri puissant et ses pattes arrière plus longues.",
+    "type": "Mammifère",
+    "statut_conservation": "Critique",
+    "regions_presentes": ["Alaotra-Mangoro", "Analamanga", "Analanjirofo", "Betsiboka", "Haute Matsiatra", "Sava", "Sofia", "Vatovavy-Fitovinany", "Atsinanana"],
+    "photos": ["Indri indri"]
+  },
+  "Daubentonia madagascariensis": {
+    "nom_scientifique": "Daubentonia madagascariensis",
+    "nom_commun": "Aye-aye",
+    "description": "Lémurien nocturne unique au monde avec un doigt long et fin pour extraire les larves du bois.",
+    "type": "Mammifère",
+    "statut_conservation": "Vulnérable",
+    "regions_presentes": ["Alaotra-Mangoro", "Atsimo-Atsinanana", "Melaky", "Sofia", "Atsinanana"],
+    "photos": ["Daubentonia madagascariensis"]
+  },
+  "Angraecum sesquipedale": {
+    "nom_scientifique": "Angraecum sesquipedale",
+    "nom_commun": "Orchidée de Darwin",
+    "description": "Orchidée endémique de Madagascar avec un nectar très profond, pollinisée par un papillon de nuit.",
+    "type": "Plante",
+    "statut_conservation": "Vulnérable",
+    "regions_presentes": ["Alaotra-Mangoro", "Sava", "Vakinankaratra"],
+    "photos": ["Angraecum sesquipedale"]
+  },
+  "Propithecus coquereli": {
+    "nom_scientifique": "Propithecus coquereli",
+    "nom_commun": "Sifaka de Coquerel",
+    "description": "Lémurien diurne connu pour sa danse sur le sol et ses grands sauts.",
+    "type": "Mammifère",
+    "statut_conservation": "Vulnérable",
+    "regions_presentes": ["Amoron'i Mania"],
+    "photos": ["Propithecus coquereli"]
+  },
+  "Phelsuma grandis": {
+    "nom_scientifique": "Phelsuma grandis",
+    "nom_commun": "Gecko vert de Madagascar",
+    "description": "Gecko de grande taille, vert vif avec des taches rouges. Très répandu dans les jardins.",
+    "type": "Reptile",
+    "statut_conservation": "Préoccupation mineure",
+    "regions_presentes": ["Amoron'i Mania"],
+    "photos": ["Phelsuma grandis"]
+  },
+  "Adansonia grandidieri": {
+    "nom_scientifique": "Adansonia grandidieri",
+    "nom_commun": "Baobab de Grandidier",
+    "description": "Arbre emblématique de Madagascar avec un tronc massif et des branches en forme de racines. Peut vivre plus de 1000 ans.",
+    "type": "Plante",
+    "statut_conservation": "Vulnérable",
+    "regions_presentes": ["Amoron'i Mania", "Atsimo-Andrefana", "Ihorombe", "Melaky", "Menabe"],
+    "photos": ["Adansonia grandidieri"]
+  },
+  "Lemur catta": {
+    "nom_scientifique": "Lemur catta",
+    "nom_commun": "Maki catta",
+    "description": "Lémurien à la queue annelée noire et blanche. Très grégaire et diurne.",
+    "type": "Mammifère",
+    "statut_conservation": "Vulnérable",
+    "regions_presentes": ["Analamanga", "Bongolava", "Itasy"],
+    "photos": ["Lemur catta"]
+  },
+  "Tenrec ecaudatus": {
+    "nom_scientifique": "Tenrec ecaudatus",
+    "nom_commun": "Tangue de Madagascar",
+    "description": "Petit mammifère insectivore, couvert de piquants, similaire au hérisson.",
+    "type": "Mammifère",
+    "statut_conservation": "Préoccupation mineure",
+    "regions_presentes": ["Analamanga"],
+    "photos": ["Tenrec ecaudatus"]
+  },
+  "Furcifer oustaleti": {
+    "nom_scientifique": "Furcifer oustaleti",
+    "nom_commun": "Caméléon de Oustalet",
+    "description": "L'un des plus grands caméléons du monde, pouvant atteindre 70 cm. Présent dans les forêts côtières.",
+    "type": "Reptile",
+    "statut_conservation": "Préoccupation mineure",
+    "regions_presentes": ["Analanjirofo"],
+    "photos": ["Furcifer oustaleti"]
+  },
+  "Propithecus verreauxi": {
+    "nom_scientifique": "Propithecus verreauxi",
+    "nom_commun": "Sifaka de Verreaux",
+    "description": "Lémurien sauteur, grégaire, avec une alimentation principalement folivore.",
+    "type": "Mammifère",
+    "statut_conservation": "Vulnérable",
+    "regions_presentes": ["Anosy", "Diana", "Haute Matsiatra", "Menabe", "Vakinankaratra"],
+    "photos": ["Propithecus verreauxi"]
+  },
+  "Pachypodium rosulatum": {
+    "nom_scientifique": "Pachypodium rosulatum",
+    "nom_commun": "Pachypode rosulé",
+    "description": "Plante succulente à tronc épais et épineux, endémique des zones rocheuses du sud de Madagascar.",
+    "type": "Plante",
+    "statut_conservation": "Vulnérable",
+    "regions_presentes": ["Anosy"],
+    "photos": ["Pachypodium rosulatum"]
+  },
+  "Adansonia za": {
+    "nom_scientifique": "Adansonia za",
+    "nom_commun": "Faux baobab",
+    "description": "Baobab à écorce lisse, souvent utilisé pour ses fibres.",
+    "type": "Plante",
+    "statut_conservation": "Vulnérable",
+    "regions_presentes": ["Anosy", "Atsimo-Atsinanana", "Menabe"],
+    "photos": ["Adansonia za"]
+  },
+  "Lepilemur ruficaudatus": {
+    "nom_scientifique": "Lepilemur ruficaudatus",
+    "nom_commun": "Lépilemur à queue rousse",
+    "description": "Lémurien nocturne arboricole, spécialisé dans une alimentation folivore.",
+    "type": "Mammifère",
+    "statut_conservation": "Vulnérable",
+    "regions_presentes": ["Atsimo-Andrefana"],
+    "photos": ["Lepilemur ruficaudatus"]
+  },
+  "Pachypodium geayi": {
+    "nom_scientifique": "Pachypodium geayi",
+    "nom_commun": "Pachypode de Geay",
+    "description": "Succulente épineuse avec un tronc en forme de bouteille, fleurs blanches.",
+    "type": "Plante",
+    "statut_conservation": "Vulnérable",
+    "regions_presentes": ["Atsimo-Andrefana"],
+    "photos": ["Pachypodium geayi"]
+  },
+  "Pteropus rufus": {
+    "nom_scientifique": "Pteropus rufus",
+    "nom_commun": "Roussette de Madagascar",
+    "description": "Grande chauve-souris frugivore, essentielle pour la pollinisation des arbres.",
+    "type": "Mammifère",
+    "statut_conservation": "Vulnérable",
+    "regions_presentes": ["Betsiboka"],
+    "photos": ["Pteropus rufus"]
+  },
+  "Pachypodium lamerei": {
+    "nom_scientifique": "Pachypodium lamerei",
+    "nom_commun": "Pachypode de Lamere",
+    "description": "Plante succulente à tige épineuse, tronc colonnaire, très recherchée en horticulture.",
+    "type": "Plante",
+    "statut_conservation": "Vulnérable",
+    "regions_presentes": ["Bongolava"],
+    "photos": ["Pachypodium lamerei"]
+  },
+  "Phelsuma lineata": {
+    "nom_scientifique": "Phelsuma lineata",
+    "nom_commun": "Gecko à lignes",
+    "description": "Petit gecko vert avec des lignes sombres, présent dans les régions côtières.",
+    "type": "Reptile",
+    "statut_conservation": "Préoccupation mineure",
+    "regions_presentes": ["Diana", "Atsinanana"],
+    "photos": ["Phelsuma lineata"]
+  },
+  "Phelsuma madagascariensis": {
+    "nom_scientifique": "Phelsuma madagascariensis",
+    "nom_commun": "Gecko de Madagascar",
+    "description": "Grand gecko vert avec des taches rouges, très commun sur l'île.",
+    "type": "Reptile",
+    "statut_conservation": "Préoccupation mineure",
+    "regions_presentes": ["Itasy"],
+    "photos": ["Phelsuma madagascariensis"]
+  },
+  "Ravenala madagascariensis": {
+    "nom_scientifique": "Ravenala madagascariensis",
+    "nom_commun": "Arbre du voyageur",
+    "description": "Plante emblématique de Madagascar, aux grandes feuilles disposées en éventail.",
+    "type": "Plante",
+    "statut_conservation": "Préoccupation mineure",
+    "regions_presentes": ["Itasy", "Sofia"],
+    "photos": ["Ravenala madagascariensis"]
+  },
+  "Phelsuma barbouri": {
+    "nom_scientifique": "Phelsuma barbouri",
+    "nom_commun": "Gecko de Barbour",
+    "description": "Petit gecko vert avec des motifs bleutés, endémique des forêts de l'est.",
+    "type": "Reptile",
+    "statut_conservation": "Vulnérable",
+    "regions_presentes": ["Vatovavy-Fitovinany"],
+    "photos": ["Phelsuma barbouri"]
+  },
+  "Cyathea australis": {
+    "nom_scientifique": "Cyathea australis",
+    "nom_commun": "Fougère arborescente",
+    "description": "Grande fougère arborescente des régions humides, tronc unique et frondes étalées.",
+    "type": "Plante",
+    "statut_conservation": "Préoccupation mineure",
+    "regions_presentes": ["Atsimo-Atsinanana"],
+    "photos": ["Cyathea australis"]
+  },
+  "Heterixalus madagascariensis": {
+    "nom_scientifique": "Heterixalus madagascariensis",
+    "nom_commun": "Grenouille malgache",
+    "description": "Petite grenouille arboricole vert vif, endémique de Madagascar.",
+    "type": "Amphibien",
+    "statut_conservation": "Préoccupation mineure",
+    "regions_presentes": ["Androy"],
+    "photos": ["Heterixalus madagascariensis"]
+  }
+}
