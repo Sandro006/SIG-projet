@@ -10,13 +10,17 @@
 </head>
 <body>
     <div id="controls" class="map-controls">
-        <select id="category-filter">
-            <option value="">Toutes les régions</option>
-            <option value="faune">Faune</option>
-            <option value="flore">Flore</option>
-            <option value="aires_protegees">Aires protégées</option>
-        </select>
-        <input id="species-search" type="text" placeholder="Rechercher une espèce...">
+        <div class="map-controls__row">
+            <select id="category-filter">
+                <option value="">Toutes les régions</option>
+                <option value="faune">Faune</option>
+                <option value="flore">Flore</option>
+                <option value="aires_protegees">Aires protégées</option>
+            </select>
+            <input id="species-search" type="text" placeholder="Rechercher une espèce...">
+        </div>
+        <!-- La légende sera insérée ici par JavaScript -->
+        <div id="legend-container"></div>
     </div>
 
     <div id="map"></div>
@@ -33,8 +37,7 @@
 
         let allRegionsData = null;
 
-        // Callback pour le clic => affiche le panneau info (faune/flore)
-        // info-panel.js expose window.handleRegionClick(feature, layer)
+        // Callback pour le clic => affiche le panneau info
         function onRegionClick(feature, layer) {
             if (typeof window.handleRegionClick === 'function') {
                 window.handleRegionClick(feature, layer);
@@ -49,7 +52,7 @@
                 weight: 2,
                 opacity: visible ? 1 : 0.2
             };
-            layer._currentStyle = nextStyle; // mémorisé pour survivre au survol (voir map-init.js)
+            layer._currentStyle = nextStyle;
             layer.setStyle(nextStyle);
         }
 
@@ -58,13 +61,56 @@
             loadRegionsLayer(map, './data/regions_madagascar.json', onRegionClick),
             window.loadFaunaFloreData().then((data) => { allRegionsData = data; })
         ]).then(() => {
-            buildLegend(map, null);
+            // Afficher la légende dans le conteneur
+            const legendContainer = document.getElementById('legend-container');
+            if (legendContainer) {
+                // Construire la légende manuellement
+                const legendHtml = `
+                    <div class="map-legend">
+                        <div class="map-legend__title">Taux d'endémisme</div>
+                        <div class="map-legend__gradient">
+                            <div class="map-legend__gradient-stop" style="background:#2c7fb8"></div>
+                            <div class="map-legend__gradient-stop" style="background:#7fcdbb"></div>
+                            <div class="map-legend__gradient-stop" style="background:#fdae61"></div>
+                            <div class="map-legend__gradient-stop" style="background:#d73027"></div>
+                        </div>
+                        <div class="map-legend__gradient-labels">
+                            <span>0%</span>
+                            <span>50%</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="map-legend__items">
+                            <div class="map-legend__row">
+                                <span class="map-legend__swatch" style="background:#2c7fb8"></span>
+                                <span class="map-legend__label">&lt; 60%</span>
+                                <span class="map-legend__value">0–60</span>
+                            </div>
+                            <div class="map-legend__row">
+                                <span class="map-legend__swatch" style="background:#7fcdbb"></span>
+                                <span class="map-legend__label">60–75%</span>
+                                <span class="map-legend__value">60–75</span>
+                            </div>
+                            <div class="map-legend__row">
+                                <span class="map-legend__swatch" style="background:#fdae61"></span>
+                                <span class="map-legend__label">75–90%</span>
+                                <span class="map-legend__value">75–90</span>
+                            </div>
+                            <div class="map-legend__row">
+                                <span class="map-legend__swatch" style="background:#d73027"></span>
+                                <span class="map-legend__label">≥ 90%</span>
+                                <span class="map-legend__value">90–100</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                legendContainer.innerHTML = legendHtml;
+            }
 
+            // Gestionnaire du filtre
             document.getElementById('category-filter').addEventListener('change', (e) => {
                 const category = e.target.value;
 
                 if (!category) {
-                    // Réinitialisation : tout redevient visible avec le style par défaut
                     map._regionsLayer.eachLayer((layer) => {
                         layer._currentStyle = styleRegion(layer.feature);
                         layer.setStyle(layer._currentStyle);
@@ -81,6 +127,7 @@
                 });
             });
 
+            // Gestionnaire de recherche
             document.getElementById('species-search').addEventListener('input', (e) => {
                 const query = e.target.value.trim();
 
