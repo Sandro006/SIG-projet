@@ -169,7 +169,19 @@
         <span>Statut de conservation</span>
         ${showConservationBadge(speciesData.statut_conservation)}
       </div>
-
+    
+      <section class="panel-section">
+        <h3>Photos disponibles</h3>
+        ${speciesData.photos && speciesData.photos.length > 0 
+          ? `<ul class="panel-list panel-photos">
+              ${speciesData.photos.map((photo) => 
+                `<li><img src="data/img/${escapeHtml(photo)}.png" alt="Photo de l'espece" width="200" height="200"></li>`
+              ).join("")}
+             </ul>`
+          : `<p class="panel-empty">Aucune photo disponible.</p>`
+        }
+      </section>
+      
       <section class="panel-section">
         <h3>Description</h3>
         <p class="panel-description">${escapeHtml(speciesData.description || "Aucune description disponible.")}</p>
@@ -183,18 +195,6 @@
       <section class="panel-section">
         <h3>Regions presentes</h3>
         ${listItems(speciesData.regions_presentes, "Aucune region renseignee.")}
-      </section>
-
-      <section class="panel-section">
-        <h3>Photos disponibles</h3>
-        ${speciesData.photos && speciesData.photos.length > 0 
-          ? `<ul class="panel-list panel-photos">
-              ${speciesData.photos.map((photo) => 
-                `<li>📷 ${escapeHtml(photo)}</li>`
-              ).join("")}
-             </ul>`
-          : `<p class="panel-empty">Aucune photo disponible.</p>`
-        }
       </section>
     `;
 
